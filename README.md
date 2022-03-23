@@ -152,14 +152,14 @@ For visualization by your own, please refer to [visualization notebook](tools/vi
 
 If you find this repo useful to your project, please consider to cite it with following bib:
 
-    <!-- @misc{yang2022focalnet,
-        title={Focal Modulation Networks}, 
-        author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
-        year={2022},
-        eprint={2107.00641},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV}
-    } -->
+   @misc{yang2022focal,
+         title={Focal Modulation Networks}, 
+         author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
+         year={2022},
+         eprint={2203.11926},
+         archivePrefix={arXiv},
+         primaryClass={cs.CV}
+   }
 
 ## Acknowledgement
 
