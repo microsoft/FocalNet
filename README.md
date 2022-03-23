@@ -2,7 +2,7 @@
 
 This is the official Pytorch implementation of FocalNets:
 
-"**FocalNets: Focal Modulation Networks**" by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
+["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
 
 ## Introduction
 
