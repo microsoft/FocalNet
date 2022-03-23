@@ -1,0 +1,9 @@
+MODEL:
+  TYPE: focalnet_tiny_iso
+  NAME: focalnet_tiny_iso
+  DROP_PATH_RATE: 0.2
+  FOCAL:
+    EMBED_DIM: 192
+    DEPTHS: [12]
+    FOCAL_LEVELS: [3]
+    FOCAL_WINDOWS: [3]

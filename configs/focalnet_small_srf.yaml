@@ -1,0 +1,9 @@
+MODEL:
+  TYPE: focalnet_small_srf
+  NAME: focalnet_small_srf
+  DROP_PATH_RATE: 0.3
+  FOCAL:
+    EMBED_DIM: 96
+    DEPTHS: [2, 2, 18, 2]
+    FOCAL_LEVELS: [2, 2, 2, 2]
+    FOCAL_WINDOWS: [3, 3, 3, 3]

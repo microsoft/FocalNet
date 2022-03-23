@@ -1,0 +1,9 @@
+MODEL:
+  TYPE: focalnet_base_iso
+  NAME: focalnet_base_iso
+  DROP_PATH_RATE: 0.2
+  FOCAL:
+    EMBED_DIM: 768
+    DEPTHS: [12]
+    FOCAL_LEVELS: [3]
+    FOCAL_WINDOWS: [3]
