@@ -1,4 +1,4 @@
-# FocalNets: Focal Modulation Networks
+# [FocalNets: Focal Modulation Networks](https://arxiv.org/abs/2203.11926)
 
 This is the official Pytorch implementation of FocalNets:
 
