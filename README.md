@@ -1,8 +1,8 @@
-# FocalNets: Focal Modulation Networks
+# [FocalNets: Focal Modulation Networks](https://arxiv.org/abs/2203.11926)
 
 This is the official Pytorch implementation of FocalNets:
 
-"**FocalNets: Focal Modulation Networks**" by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
+["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
 
 ## Introduction
 
@@ -152,14 +152,14 @@ For visualization by your own, please refer to [visualization notebook](tools/vi
 
 If you find this repo useful to your project, please consider to cite it with following bib:
 
-    <!-- @misc{yang2022focalnet,
-        title={Focal Modulation Networks}, 
-        author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
-        year={2022},
-        eprint={2107.00641},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV}
-    } -->
+    @misc{yang2022focal,
+          title={Focal Modulation Networks}, 
+          author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
+          year={2022},
+          eprint={2203.11926},
+          archivePrefix={arXiv},
+          primaryClass={cs.CV}
+    }
 
 ## Acknowledgement
 
