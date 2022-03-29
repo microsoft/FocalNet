@@ -1,6 +1,6 @@
 MODEL:
-  TYPE: focalnet_base_srf
-  NAME: focalnet_base_srf
+  TYPE: focalnet_base_lrf
+  NAME: focalnet_base_lrf
   DROP_PATH_RATE: 0.5
   FOCAL:
     EMBED_DIM: 128

@@ -6,8 +6,6 @@ def build_model(config):
     is_pretrained = config.MODEL.PRETRAINED 
 
     print(f"Creating model: {model_type}")
-
-    import pdb; pdb.set_trace()
     
     if "focal" in model_type:
         model = create_model(
