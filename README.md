@@ -115,7 +115,7 @@ Focal-Modulation May be What We Need for Visual Modeling!
 There are three steps in our FocalNets: 
  1. Contexualization with depth-wise conv; 
  2. Multi-scale aggregation with gating mechanism; 
- 3. Modulator derived from contex aggregation and projection. 
+ 3. Modulator derived from context aggregation and projection. 
 
 We visualize them one by one.
 
