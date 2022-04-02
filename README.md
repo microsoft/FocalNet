@@ -39,6 +39,10 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 Focal-Modulation May be What We Need for Visual Modeling!
 </p>
 
+## Updates
+
+* [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
+
 ## Getting Started
 
 * Please follow [get_started_for_image_classification](./classification) to get started for image classification.
