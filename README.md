@@ -159,11 +159,9 @@ If you find this repo useful to your project, please consider to cite it with fo
 
     @misc{yang2022focal,
           title={Focal Modulation Networks}, 
-          author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
-          year={2022},
-          eprint={2203.11926},
-          archivePrefix={arXiv},
-          primaryClass={cs.CV}
+          author={Jianwei Yang and Chunyuan Li and Xiyang Dai and Jianfeng Gao},
+          journal={Advances in Neural Information Processing Systems (NeurIPS)},
+          year={2022}
     }
 
 ## Acknowledgement
