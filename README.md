@@ -41,6 +41,7 @@ Focal-Modulation May be What We Need for Visual Modeling!
 
 ## Updates
 
+* [09/20/2022] Our FocalNet has been accepted by NeurIPS 2022!
 * [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
 
 ## Getting Started
