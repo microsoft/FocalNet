@@ -49,7 +49,7 @@ Focal-Modulation May be What We Need for Visual Modeling!
 
 ## News
 
-* **[10/31/2022]** :collision: We achieved new SoTA with 64.2 box mAP on [COCO minival](https://paperswithcode.com/sota/object-detection-on-coco-minival) and 64.3 box mAP on [COCO test-dev](https://paperswithcode.com/sota/object-detection-on-coco)! We used huge model size (700M) beating much larger attention-based models like SwinV2-G and BEIT-3. Checkoout our [new version](./FocalNet_NeurIPS2022_extension.pdf) and stay tuned!
+* **[10/31/2022]** :collision: We achieved new SoTA with 64.2 box mAP on [COCO minival](https://paperswithcode.com/sota/object-detection-on-coco-minival) and 64.3 box mAP on [COCO test-dev](https://paperswithcode.com/sota/object-detection-on-coco) based on the powerful OD method [DINO](https://github.com/IDEA-Research/DINO)! We used huge model size (700M) beating much larger attention-based models like SwinV2-G and BEIT-3. Checkoout our [new version](./FocalNet_NeurIPS2022_extension.pdf) and stay tuned!
 * [09/20/2022] Our FocalNet has been accepted by NeurIPS 2022!
 * [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
 
