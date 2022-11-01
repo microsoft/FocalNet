@@ -1,8 +1,8 @@
-# [FocalNets: Focal Modulation Networks](https://arxiv.org/abs/2203.11926)
+# [Focal Modulation Networks](./FocalNet_NeurIPS2022_extension.pdf)
 
 This is the official Pytorch implementation of FocalNets:
 
-["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), [Xiyang Dai](https://sites.google.com/site/xiyangdai/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
+["**Focal Modulation Networks**"](./FocalNet_NeurIPS2022_extension.pdf) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), [Xiyang Dai](https://sites.google.com/site/xiyangdai/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
 
 ## Introduction
 
@@ -39,8 +39,9 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 Focal-Modulation May be What We Need for Visual Modeling!
 </p>
 
-## Updates
+## News
 
+* **[10/31/2022]** :collision: We achieved new SoTA with 64.2 box mAP on [COCO minival](https://paperswithcode.com/sota/object-detection-on-coco-minival) and 64.3 box mAP on [COCO test-dev](https://paperswithcode.com/sota/object-detection-on-coco)! We used huge model size (700M) beating much larger attention-based models like SwinV2-G and BEIT-3. Checkoout our [new version](./FocalNet_NeurIPS2022_extension.pdf) and stay tuned!
 * [09/20/2022] Our FocalNet has been accepted by NeurIPS 2022!
 * [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
 
