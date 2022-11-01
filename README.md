@@ -7,7 +7,7 @@ This is the official Pytorch implementation of FocalNets:
 ## Introduction
 
 <p align="center">
-<img src="figures/focalnet-model.png" width=80% height=80% 
+<img src="figures/SA_FM_Comparison.png" width=95% height=95% 
 class="center">
 </p>
 
@@ -18,6 +18,11 @@ We propose **FocalNets: Focal Modulation Networks**, an **attention-free** archi
 * **Spatial- and channel-specific**: It first aggregates the context spatial-wise and then channel-wise, followed by an element-wise modulation.
 * **Decoupled feature granularity**: Query token preserves the invidual information at finest level, while coarser context is extracted surrounding it. They two are decoupled but connected through the modulation operation.
 * **Easy to implement**: We can implement both context aggregation and interaction in a very simple and light-weight way. It does not need softmax, multiple attention heads, feature map rolling or unfolding, etc.
+
+<p align="center">
+<img src="figures/focalnet-model.png" width=80% height=80% 
+class="center">
+</p>
 
 Before getting started, see what our focal modulation have learned!
 
