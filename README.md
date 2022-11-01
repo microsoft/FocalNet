@@ -175,7 +175,7 @@ If you find this repo useful to your project, please consider to cite it with fo
 
 ## Acknowledgement
 
-Our codebase is built based on [Swin Transformer](https://github.com/microsoft/Swin-Transformer) and [Focal Transformer](https://github.com/microsoft/Focal-Transformer). We thank the authors for the nicely organized code!
+Our codebase is built based on [Swin Transformer](https://github.com/microsoft/Swin-Transformer) and [Focal Transformer](https://github.com/microsoft/Focal-Transformer). To achieve the SoTA object detection performance, we heavily rely on the most advanced method [DINO](https://github.com/IDEA-Research/DINO) and the advices from the authors. We thank the authors for the nicely organized code!
 
 ## Contributing
 
