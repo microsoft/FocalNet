@@ -43,9 +43,7 @@ Before getting started, see what our focal modulation have learned!
 
 Finally, FocalNets are built with convolutional and linear layers, but goes beyond by proposing a new modulation mechanism that is simple, generic, effective and efficient. We hereby recommend: 
 
-<p style="font-style: italic; text-align: center;">
-Focal-Modulation May be What We Need for Visual Modeling!
-</p>
+**Focal-Modulation May be What We Need for Visual Modeling!**
 
 ## News
 
