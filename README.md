@@ -34,18 +34,10 @@ We propose **FocalNets: Focal Modulation Networks**, an **attention-free** archi
 class="center">
 </p>
 
-Before getting started, see what our focal modulation have learned!
-
-* Modulator learned by isotropic FocalNet (FocalNet-B-ISO):
+Before getting started, see what our FocalNets have learned to perceive images and where to modulate!
 
 <p align="center">
-<img src="figures/focalnet_base_iso_l8.gif" width=90% class="center">
-</p>
-
-* Modulator learned by multi-stage FocalNet (FocalNet-B-LRF):
-
-<p align="center">
-<img src="figures/focalnet_base_lrf_s3.gif" width=90% class="center">
+<img src="figures/teaser_fig.png" width=90% class="center">
 </p>
 
 Finally, FocalNets are built with convolutional and linear layers, but goes beyond by proposing a new modulation mechanism that is simple, generic, effective and efficient. We hereby recommend: 
