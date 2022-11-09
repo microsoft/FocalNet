@@ -7,6 +7,7 @@ This is the official Pytorch implementation of FocalNets:
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=focal-modulation-networks)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=focal-modulation-networks)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/panoptic-segmentation-on-coco-minival)](https://paperswithcode.com/sota/panoptic-segmentation-on-coco-minival?p=focal-modulation-networks)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/semantic-segmentation-on-ade20k)](https://paperswithcode.com/sota/semantic-segmentation-on-ade20k?p=focal-modulation-networks)
 
 ## News
 
