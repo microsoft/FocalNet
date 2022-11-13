@@ -74,6 +74,18 @@ Focal-Modulation May be What We Need for Visual Modeling!
 | FocalNet-S | 12 | 384 | [3,5,7] | 22.4 | 4.3 | 920 | 80.9 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_small_iso_16.pth)/[config](configs/focalnet_small_iso.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_small_iso.txt)
 | FocalNet-B | 12 | 768 | [3,5,7] | 87.2 | 16.9 | 300 | 82.4 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_iso_16.pth)/[config](configs/focalnet_base_iso.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_iso.txt)
 
+
+#### ImageNet-22K Pretrained
+
+| Model | Depth | Dim | Kernels | #Params. (M) | Download
+| :----: | :---: | :---: | :---: | :---: | :--: | 
+| FocalNet-L | [2,2,18,2] | 192 | [5,7,9] | 207 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384.pth)/[config](configs/focalnet_large_fl3.yaml)
+| FocalNet-L | [2,2,18,2] | 192 | [3,5,7,9] | 207 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384_fl4.pth)/[config](configs/focalnet_large_fl4.yaml)
+| FocalNet-XL | [2,2,18,2] | 256 | [5,7,9] | 366 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384.pth)/[config](configs/focalnet_xlarge_fl3.yaml)
+| FocalNet-XL | [2,2,18,2] | 256 | [3,5,7,9] | 366 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384_fl4.pth)/[config](configs/focalnet_xlarge_fl4.yaml)
+| FocalNet-H | [2,2,18,2] | 352 | [3,5,7] | 687 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224.pth)/[config](configs/focalnet_huge_fl3.yaml)
+| FocalNet-H | [2,2,18,2] | 352 | [3,5,7,9] | 689 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224_fl4.pth)/[config](configs/focalnet_huge_fl4.yaml)
+
 ### Object Detection on [COCO](https://cocodataset.org/#home)
 
 * [Mask R-CNN](https://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf)

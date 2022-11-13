@@ -36,14 +36,15 @@ class Mlp(nn.Module):
         return x
 
 class FocalModulation(nn.Module):
-    def __init__(self, dim, focal_window, focal_level, focal_factor=2, bias=True, proj_drop=0., use_postln=False):
+    def __init__(self, dim, focal_window, focal_level, focal_factor=2, bias=True, proj_drop=0., use_postln_in_modulation=False, normalize_modulator=False):
         super().__init__()
 
         self.dim = dim
         self.focal_window = focal_window
         self.focal_level = focal_level
         self.focal_factor = focal_factor
-        self.use_postln = use_postln
+        self.use_postln_in_modulation = use_postln_in_modulation
+        self.normalize_modulator = normalize_modulator
 
         self.f = nn.Linear(dim, 2*dim + (self.focal_level+1), bias=bias)
         self.h = nn.Conv2d(dim, dim, kernel_size=1, stride=1, bias=bias)
@@ -64,7 +65,7 @@ class FocalModulation(nn.Module):
                     )
                 )              
             self.kernel_sizes.append(kernel_size)          
-        if self.use_postln:
+        if self.use_postln_in_modulation:
             self.ln = nn.LayerNorm(dim)
 
     def forward(self, x):
@@ -86,11 +87,15 @@ class FocalModulation(nn.Module):
         ctx_global = self.act(ctx.mean(2, keepdim=True).mean(3, keepdim=True))
         ctx_all = ctx_all + ctx_global*self.gates[:,self.focal_level:]
 
+        # normalize context
+        if self.normalize_modulator:
+            ctx_all = ctx_all / (self.focal_level+1)
+
         # focal modulation
         self.modulator = self.h(ctx_all)
         x_out = q*self.modulator
         x_out = x_out.permute(0, 2, 3, 1).contiguous()
-        if self.use_postln:
+        if self.use_postln_in_modulation:
             x_out = self.ln(x_out)
         
         # post linear porjection
@@ -143,7 +148,8 @@ class FocalNetBlock(nn.Module):
                     act_layer=nn.GELU, norm_layer=nn.LayerNorm,
                     focal_level=1, focal_window=3,
                     use_layerscale=False, layerscale_value=1e-4, 
-                    use_postln=False):
+                    use_postln=False, use_postln_in_modulation=False, 
+                    normalize_modulator=False):
         super().__init__()
         self.dim = dim
         self.input_resolution = input_resolution
@@ -151,9 +157,13 @@ class FocalNetBlock(nn.Module):
 
         self.focal_window = focal_window
         self.focal_level = focal_level
+        self.use_postln = use_postln
 
         self.norm1 = norm_layer(dim)
-        self.modulation = FocalModulation(dim, proj_drop=drop, focal_window=focal_window, focal_level=self.focal_level, use_postln=use_postln)
+        self.modulation = FocalModulation(
+            dim, proj_drop=drop, focal_window=focal_window, focal_level=self.focal_level, 
+            use_postln_in_modulation=use_postln_in_modulation, normalize_modulator=normalize_modulator
+        )
 
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.norm2 = norm_layer(dim)
@@ -175,13 +185,14 @@ class FocalNetBlock(nn.Module):
         shortcut = x
 
         # Focal Modulation
-        x = self.norm1(x)
+        x = x if self.use_postln else self.norm1(x)
         x = x.view(B, H, W, C)
         x = self.modulation(x).view(B, H * W, C)
+        x = x if not self.use_postln else self.norm1(x)
 
         # FFN
         x = shortcut + self.drop_path(self.gamma_1 * x)
-        x = x + self.drop_path(self.gamma_2 * self.mlp(self.norm2(x)))
+        x = x + self.drop_path(self.gamma_2 * (self.norm2(self.mlp(x)) if self.use_postln else self.mlp(self.norm2(x))))
 
         return x
 
@@ -232,7 +243,10 @@ class BasicLayer(nn.Module):
                  downsample=None, use_checkpoint=False, 
                  focal_level=1, focal_window=1, 
                  use_conv_embed=False, 
-                 use_layerscale=False, layerscale_value=1e-4, use_postln=False):
+                 use_layerscale=False, layerscale_value=1e-4, 
+                 use_postln=False, 
+                 use_postln_in_modulation=False, 
+                 normalize_modulator=False):
 
         super().__init__()
         self.dim = dim
@@ -254,6 +268,8 @@ class BasicLayer(nn.Module):
                 use_layerscale=use_layerscale, 
                 layerscale_value=layerscale_value,
                 use_postln=use_postln, 
+                use_postln_in_modulation=use_postln_in_modulation, 
+                normalize_modulator=normalize_modulator, 
             )
             for i in range(depth)])
 
@@ -393,6 +409,8 @@ class FocalNet(nn.Module):
                 use_layerscale=False, 
                 layerscale_value=1e-4, 
                 use_postln=False, 
+                use_postln_in_modulation=False, 
+                normalize_modulator=False, 
                 **kwargs):
         super().__init__()
 
@@ -443,6 +461,8 @@ class FocalNet(nn.Module):
                                use_layerscale=use_layerscale, 
                                layerscale_value=layerscale_value, 
                                use_postln=use_postln,
+                               use_postln_in_modulation=use_postln_in_modulation, 
+                               normalize_modulator=normalize_modulator
                     )
             self.layers.append(layer)
 
@@ -619,13 +639,70 @@ def focalnet_base_iso_16(pretrained=False, **kwargs):
         model.load_state_dict(checkpoint["model"])
     return model
 
+# FocalNet large+ models 
+@register_model
+def focalnet_large_fl3(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, focal_levels=[3, 3, 3, 3], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_large_fl3']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
+@register_model
+def focalnet_large_fl4(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, focal_levels=[4, 4, 4, 4], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_large_fl4']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
+@register_model
+def focalnet_xlarge_fl3(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, focal_levels=[3, 3, 3, 3], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_xlarge_fl3']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
+
+@register_model
+def focalnet_xlarge_fl4(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, focal_levels=[4, 4, 4, 4], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_xlarge_fl4']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
+@register_model
+def focalnet_huge_fl3(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, focal_levels=[3, 3, 3, 3], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_huge_fl3']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
+@register_model
+def focalnet_huge_fl4(pretrained=False, **kwargs):
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, focal_levels=[4, 4, 4, 4], **kwargs)
+    if pretrained:
+        url = model_urls['focalnet_huge_fl4']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint["model"])
+    return model
+
 if __name__ == '__main__':
     img_size = 224
     x = torch.rand(16, 3, img_size, img_size).cuda()
     # model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96)
     # model = FocalNet(depths=[12], patch_size=16, embed_dim=768, focal_levels=[3], focal_windows=[3], focal_factors=[2])
     model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96, focal_levels=[3, 3, 3, 3]).cuda()
-    print(model); model(x)
+    print(model); 
+    model(x)
 
     flops = model.flops()
     print(f"number of GFLOPs: {flops / 1e9}")

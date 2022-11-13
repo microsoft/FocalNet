@@ -13,9 +13,13 @@ def build_model(config):
             img_size=config.DATA.IMG_SIZE,
             num_classes=config.MODEL.NUM_CLASSES,
             drop_path_rate=config.MODEL.DROP_PATH_RATE,
+            focal_levels=config.MODEL.FOCAL.FOCAL_LEVELS, 
+            focal_windows=config.MODEL.FOCAL.FOCAL_WINDOWS, 
             use_conv_embed=config.MODEL.FOCAL.USE_CONV_EMBED, 
             use_layerscale=config.MODEL.FOCAL.USE_LAYERSCALE,
-            use_postln=config.MODEL.FOCAL.USE_POSTLN
+            use_postln=config.MODEL.FOCAL.USE_POSTLN, 
+            use_postln_in_modulation=config.MODEL.FOCAL.USE_POSTLN_IN_MODULATION, 
+            normalize_modulator=config.MODEL.FOCAL.NORMALIZE_MODULATOR, 
         )                      
     elif "vit" in model_type:
         model = create_model(

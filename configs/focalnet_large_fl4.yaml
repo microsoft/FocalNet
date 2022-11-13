@@ -1,0 +1,12 @@
+MODEL:
+  TYPE: focalnet_large_fl4
+  NAME: focalnet_large_fl4
+  DROP_PATH_RATE: 0.5
+  FOCAL:
+    EMBED_DIM: 192
+    FOCAL_LEVELS: [4, 4, 4, 4]
+    FOCAL_WINDOWS: [3, 3, 3, 3]
+    USE_CONV_EMBED: True
+    USE_POSTLN: True
+    USE_LAYERSCALE: True
+    NORMALIZE_MODULATOR: True

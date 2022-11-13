@@ -1,0 +1,12 @@
+MODEL:
+  TYPE: focalnet_xlarge_fl3
+  NAME: focalnet_xlarge_fl3
+  DROP_PATH_RATE: 0.5
+  FOCAL:
+    EMBED_DIM: 256
+    DEPTHS: [2, 2, 18, 2]
+    FOCAL_LEVELS: [3, 3, 3, 3]
+    FOCAL_WINDOWS: [5, 5, 5, 5]
+    USE_CONV_EMBED: True
+    USE_POSTLN: True
+    USE_LAYERSCALE: True

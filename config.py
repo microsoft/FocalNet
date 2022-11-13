@@ -76,7 +76,8 @@ _C.MODEL.FOCAL.FOCAL_FACTORS = [2, 2, 2, 2]
 _C.MODEL.FOCAL.USE_CONV_EMBED = False
 _C.MODEL.FOCAL.USE_LAYERSCALE = False
 _C.MODEL.FOCAL.USE_POSTLN = False
-
+_C.MODEL.FOCAL.USE_POSTLN_IN_MODULATION = False
+_C.MODEL.FOCAL.NORMALIZE_MODULATOR = False
 # -----------------------------------------------------------------------------
 # Training settings
 # -----------------------------------------------------------------------------
