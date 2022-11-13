@@ -1,13 +1,25 @@
-# [FocalNets: Focal Modulation Networks](https://arxiv.org/abs/2203.11926)
+# [Focal Modulation Networks](https://arxiv.org/abs/2203.11926)
 
 This is the official Pytorch implementation of FocalNets:
 
-["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
+["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), [Xiyang Dai](https://sites.google.com/site/xiyangdai/), [Lu Yuan](https://scholar.google.com/citations?user=k9TsUVsAAAAJ&hl=en) and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=focal-modulation-networks)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=focal-modulation-networks)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/panoptic-segmentation-on-coco-minival)](https://paperswithcode.com/sota/panoptic-segmentation-on-coco-minival?p=focal-modulation-networks)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/semantic-segmentation-on-ade20k)](https://paperswithcode.com/sota/semantic-segmentation-on-ade20k?p=focal-modulation-networks)
+
+## News
+
+* [11/02/2022] We wrote a [blog post](https://www.microsoft.com/en-us/research/group/deep-learning-group/articles/focalnets-focusing-the-eyes-with-focal-modulation/) to introduce the insights and techniques behind our FocalNets in a plain way, check it out!
+* [10/31/2022] :collision: We achieved new SoTA with <strike>64.2</strike> **64.3** box mAP on [COCO minival](https://paperswithcode.com/sota/object-detection-on-coco-minival) and <strike>64.3</strike> **64.4** box mAP on [COCO test-dev](https://paperswithcode.com/sota/object-detection-on-coco) based on the powerful OD method [DINO](https://github.com/IDEA-Research/DINO)! We used huge model size (700M) beating much larger attention-based models like SwinV2-G and BEIT-3. Checkoout our [new version](./FocalNet_NeurIPS2022_extension.pdf) and stay tuned!
+* [09/20/2022] Our FocalNet has been accepted by NeurIPS 2022!
+* [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
 
 ## Introduction
 
 <p align="center">
-<img src="figures/focalnet-model.png" width=80% height=80% 
+<img src="figures/SA_FM_Comparison.png" width=95% height=95% 
 class="center">
 </p>
 
@@ -19,29 +31,20 @@ We propose **FocalNets: Focal Modulation Networks**, an **attention-free** archi
 * **Decoupled feature granularity**: Query token preserves the invidual information at finest level, while coarser context is extracted surrounding it. They two are decoupled but connected through the modulation operation.
 * **Easy to implement**: We can implement both context aggregation and interaction in a very simple and light-weight way. It does not need softmax, multiple attention heads, feature map rolling or unfolding, etc.
 
-Before getting started, see what our focal modulation have learned!
-
-* Modulator learned by isotropic FocalNet (FocalNet-B-ISO):
-
 <p align="center">
-<img src="figures/focalnet_base_iso_l8.gif" width=90% class="center">
+<img src="figures/focalnet-model.png" width=80% height=80% 
+class="center">
 </p>
 
-* Modulator learned by multi-stage FocalNet (FocalNet-B-LRF):
+Before getting started, see what our FocalNets have learned to perceive images and where to modulate!
 
 <p align="center">
-<img src="figures/focalnet_base_lrf_s3.gif" width=90% class="center">
+<img src="figures/teaser_fig.png" width=90% class="center">
 </p>
 
 Finally, FocalNets are built with convolutional and linear layers, but goes beyond by proposing a new modulation mechanism that is simple, generic, effective and efficient. We hereby recommend: 
 
-<p style="font-style: italic; text-align: center;">
-Focal-Modulation May be What We Need for Visual Modeling!
-</p>
-
-## Updates
-
-* [04/02/2022] Create a [gradio demo in huggingface space](https://huggingface.co/spaces/jw2yang/focalnet-modulators) to visualize the modulation mechanism. Check it out!
+**Focal-Modulation May be What We Need for Visual Modeling!**
 
 ## Getting Started
 
@@ -170,16 +173,14 @@ If you find this repo useful to your project, please consider to cite it with fo
 
     @misc{yang2022focal,
           title={Focal Modulation Networks}, 
-          author={Jianwei Yang and Chunyuan Li and Jianfeng Gao},
-          year={2022},
-          eprint={2203.11926},
-          archivePrefix={arXiv},
-          primaryClass={cs.CV}
+          author={Jianwei Yang and Chunyuan Li and Xiyang Dai and Jianfeng Gao},
+          journal={Advances in Neural Information Processing Systems (NeurIPS)},
+          year={2022}
     }
 
 ## Acknowledgement
 
-Our codebase is built based on [Swin Transformer](https://github.com/microsoft/Swin-Transformer) and [Focal Transformer](https://github.com/microsoft/Focal-Transformer). We thank the authors for the nicely organized code!
+Our codebase is built based on [Swin Transformer](https://github.com/microsoft/Swin-Transformer) and [Focal Transformer](https://github.com/microsoft/Focal-Transformer). To achieve the SoTA object detection performance, we heavily rely on the most advanced method [DINO](https://github.com/IDEA-Research/DINO) and the advices from the authors. We thank the authors for the nicely organized code!
 
 ## Contributing
 
