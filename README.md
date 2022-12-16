@@ -11,7 +11,7 @@ This is the official Pytorch implementation of FocalNets:
 
 ## News
 
-* [12/16/2022] :collision: We are pleased to release our [FocalNet-Large-DINO checkpoint](https://github.com/FocalNet/FocalNet-DINO/blob/main/README.md#model-zoos) pretrained on Object365 and finetuned on COCO, which help to get **63.5** mAP without tta on COCO minival! Check it out!
+* [12/16/2022] :collision: We are pleased to release our [FocalNet-Large-DINO checkpoint](https://github.com/FocalNet/FocalNet-DINO#model-zoos) pretrained on Object365 and finetuned on COCO, which help to get **63.5** mAP without tta on COCO minival! Check it out!
 * [11/14/2022] We created a new repo [FocalNet-DINO](https://github.com/FocalNet/FocalNet-DINO) to hold the code to reproduce the object detection performance with DINO. We will be releasing the object detection code and checkpoints there. Stay tunned!
 * [11/13/2022] :collision: We release our [large, xlarge and huge models](https://github.com/microsoft/FocalNet#imagenet-22k-pretrained) pretrained on ImageNet-22K, including the one we used to achieve the SoTA on COCO object detection leaderboard!
 * [11/02/2022] We wrote a [blog post](https://www.microsoft.com/en-us/research/group/deep-learning-group/articles/focalnets-focusing-the-eyes-with-focal-modulation/) to introduce the insights and techniques behind our FocalNets in a plain way, check it out!
