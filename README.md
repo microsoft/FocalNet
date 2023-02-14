@@ -11,6 +11,7 @@ This is the official Pytorch implementation of FocalNets:
 
 ## News
 
+* [02/13/2023] FocalNet has been integrated to [Keras](https://github.com/keras-team/keras-io), check out the [tutorial](https://keras.io/examples/vision/focal_modulation_network/)!
 * [01/18/2023] Checkout a curated paper list which introduce [networks beyond attention](https://github.com/FocalNet/Networks-Beyond-Attention) based on modern convolution and modulation!
 * [01/01/2023] Researchers showed that Focal-UNet beats Swin-UNet on several medical image segmentation benchmarks. Check out their [code](https://github.com/givkashi/Focal-Unet) and [paper](https://arxiv.org/abs/2212.09263), and happy new year!
 * [12/16/2022] :collision: We are pleased to release our [FocalNet-Large-DINO checkpoint](https://github.com/FocalNet/FocalNet-DINO#model-zoos) pretrained on Object365 and finetuned on COCO, which help to get **63.5** mAP without tta on COCO minival! Check it out!
