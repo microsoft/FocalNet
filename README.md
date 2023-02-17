@@ -62,8 +62,6 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 
 ### Image Classification on [ImageNet-1K](https://www.image-net.org/)
 
-#### ImageNet-1K Pretrained
-
 * Strict comparison with multi-scale Swin and Focal Transformers:
 
 | Model | Depth | Dim | Kernels | #Params. (M) | FLOPs (G) | Throughput (imgs/s) | Top-1 | Download
@@ -84,7 +82,7 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 | FocalNet-B | 12 | 768 | [3,5,7] | 87.2 | 16.9 | 300 | 82.4 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_iso_16.pth)/[config](configs/focalnet_base_iso.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_iso.txt)
 
 
-#### ImageNet-22K Pretrained
+### ImageNet-22K Pretraining
 
 | Model | Depth | Dim | Kernels | #Params. (M) | Download
 | :----: | :---: | :---: | :---: | :---: | :--: | 
