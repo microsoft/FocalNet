@@ -550,12 +550,18 @@ def build_transforms4display(img_size, center_crop=False):
     return transforms.Compose(t)
 
 model_urls = {
-    "focalnet_tiny_srf": "",
-    "focalnet_small_srf": "",
-    "focalnet_base_srf": "",
-    "focalnet_tiny_lrf": "",
-    "focalnet_small_lrf": "",
-    "focalnet_base_lrf": "",    
+    "focalnet_tiny_srf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_tiny_srf.pth",
+    "focalnet_tiny_lrf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_tiny_lrf.pth",
+    "focalnet_small_srf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_small_srf.pth",
+    "focalnet_small_lrf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_small_lrf.pth",
+    "focalnet_base_srf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_srf.pth",
+    "focalnet_base_lrf": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_lrf.pth",    
+    "focalnet_large_fl3": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384.pth", 
+    "focalnet_large_fl4": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384_fl4.pth", 
+    "focalnet_xlarge_fl3": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384.pth", 
+    "focalnet_xlarge_fl4": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384_fl4.pth", 
+    "focalnet_huge_fl3": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224.pth", 
+    "focalnet_huge_fl4": "https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224_fl4.pth", 
 }
 
 @register_model
@@ -587,7 +593,7 @@ def focalnet_base_srf(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_tiny_lrf(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96, **kwargs)
     if pretrained:
         url = model_urls['focalnet_tiny_lrf']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu", check_hash=True)
@@ -596,7 +602,7 @@ def focalnet_tiny_lrf(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_small_lrf(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=96, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=96, **kwargs)
     if pretrained:
         url = model_urls['focalnet_small_lrf']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -605,7 +611,7 @@ def focalnet_small_lrf(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_base_lrf(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=128, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=128, **kwargs)
     if pretrained:
         url = model_urls['focalnet_base_lrf']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -613,28 +619,28 @@ def focalnet_base_lrf(pretrained=False, **kwargs):
     return model
 
 @register_model
-def focalnet_tiny_iso_16(pretrained=False, **kwargs):
-    model = FocalNet(depths=[12], patch_size=16, embed_dim=192, focal_levels=[3], focal_windows=[3], **kwargs)
+def focalnet_tiny_iso(pretrained=False, **kwargs):
+    model = FocalNet(depths=[12], patch_size=16, embed_dim=192, **kwargs)
     if pretrained:
-        url = model_urls['focalnet_tiny_iso_16']
+        url = model_urls['focalnet_tiny_iso']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu", check_hash=True)
         model.load_state_dict(checkpoint["model"])
     return model
 
 @register_model
-def focalnet_small_iso_16(pretrained=False, **kwargs):
-    model = FocalNet(depths=[12], patch_size=16, embed_dim=384, focal_levels=[3], focal_windows=[3], **kwargs)
+def focalnet_small_iso(pretrained=False, **kwargs):
+    model = FocalNet(depths=[12], patch_size=16, embed_dim=384, **kwargs)
     if pretrained:
-        url = model_urls['focalnet_small_iso_16']
+        url = model_urls['focalnet_small_iso']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
         model.load_state_dict(checkpoint["model"])
     return model
 
 @register_model
-def focalnet_base_iso_16(pretrained=False, **kwargs):
+def focalnet_base_iso(pretrained=False, **kwargs):
     model = FocalNet(depths=[12], patch_size=16, embed_dim=768, focal_levels=[3], focal_windows=[3], use_layerscale=True, use_postln=True, **kwargs)
     if pretrained:
-        url = model_urls['focalnet_base_iso_16']
+        url = model_urls['focalnet_base_iso']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
         model.load_state_dict(checkpoint["model"])
     return model
@@ -642,7 +648,7 @@ def focalnet_base_iso_16(pretrained=False, **kwargs):
 # FocalNet large+ models 
 @register_model
 def focalnet_large_fl3(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, **kwargs)
     if pretrained:
         url = model_urls['focalnet_large_fl3']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -651,7 +657,7 @@ def focalnet_large_fl3(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_large_fl4(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, focal_levels=[4, 4, 4, 4], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=192, **kwargs)
     if pretrained:
         url = model_urls['focalnet_large_fl4']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -660,7 +666,7 @@ def focalnet_large_fl4(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_xlarge_fl3(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, **kwargs)
     if pretrained:
         url = model_urls['focalnet_xlarge_fl3']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -670,7 +676,7 @@ def focalnet_xlarge_fl3(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_xlarge_fl4(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, focal_levels=[4, 4, 4, 4], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=256, **kwargs)
     if pretrained:
         url = model_urls['focalnet_xlarge_fl4']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -679,7 +685,7 @@ def focalnet_xlarge_fl4(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_huge_fl3(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, focal_levels=[3, 3, 3, 3], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, **kwargs)
     if pretrained:
         url = model_urls['focalnet_huge_fl3']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -688,7 +694,7 @@ def focalnet_huge_fl3(pretrained=False, **kwargs):
 
 @register_model
 def focalnet_huge_fl4(pretrained=False, **kwargs):
-    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, focal_levels=[4, 4, 4, 4], **kwargs)
+    model = FocalNet(depths=[2, 2, 18, 2], embed_dim=352, **kwargs)
     if pretrained:
         url = model_urls['focalnet_huge_fl4']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -698,8 +704,6 @@ def focalnet_huge_fl4(pretrained=False, **kwargs):
 if __name__ == '__main__':
     img_size = 224
     x = torch.rand(16, 3, img_size, img_size).cuda()
-    # model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96)
-    # model = FocalNet(depths=[12], patch_size=16, embed_dim=768, focal_levels=[3], focal_windows=[3], focal_factors=[2])
     model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96, focal_levels=[3, 3, 3, 3]).cuda()
     print(model); 
     model(x)

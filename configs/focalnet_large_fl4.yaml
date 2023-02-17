@@ -1,6 +1,8 @@
 MODEL:
   TYPE: focalnet_large_fl4
   NAME: focalnet_large_fl4
+  PRETRAINED: True
+  NUM_CLASSES: 21842  
   DROP_PATH_RATE: 0.5
   FOCAL:
     EMBED_DIM: 192
