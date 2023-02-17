@@ -95,6 +95,8 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 | FocalNet-H | [2,2,18,2] | 352 | [3,5,7] | 687 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224.pth)/[config](configs/focalnet_huge_fl3.yaml)
 | FocalNet-H | [2,2,18,2] | 352 | [3,5,7,9] | 689 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224_fl4.pth)/[config](configs/focalnet_huge_fl4.yaml)
 
+**NOTE**: We reorder the class names in imagenet-22k so that we can directly use the first 1k logits for evaluating on imagenet-1k. We remind that the 851th class (label=850) in imagenet-1k is missed in imagenet-22k. Please refer to this [labelmap](https://github.com/microsoft/FocalNet/blob/main/labelmap_22k_reorder.txt). More discussion found in this [issue](https://github.com/microsoft/FocalNet/issues/27).
+
 ### Object Detection on [COCO](https://cocodataset.org/#home)
 
 * [Mask R-CNN](https://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf)
