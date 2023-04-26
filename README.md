@@ -4,13 +4,13 @@ This is the official Pytorch implementation of FocalNets:
 
 ["**Focal Modulation Networks**"](https://arxiv.org/abs/2203.11926) by [Jianwei Yang](https://jwyang.github.io/), [Chunyuan Li](https://chunyuan.li/), [Xiyang Dai](https://sites.google.com/site/xiyangdai/), [Lu Yuan](https://scholar.google.com/citations?user=k9TsUVsAAAAJ&hl=en) and [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F).
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=focal-modulation-networks)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=focal-modulation-networks)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-strong-and-reproducible-object-detector/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=a-strong-and-reproducible-object-detector) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-strong-and-reproducible-object-detector/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=a-strong-and-reproducible-object-detector)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/panoptic-segmentation-on-coco-minival)](https://paperswithcode.com/sota/panoptic-segmentation-on-coco-minival?p=focal-modulation-networks)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/focal-modulation-networks/semantic-segmentation-on-ade20k)](https://paperswithcode.com/sota/semantic-segmentation-on-ade20k?p=focal-modulation-networks)
 
 ## News
-
+* [04/26/2023] By combining with [FocalNet-Huge](https://github.com/microsoft/FocalNet) backbone, Focal-Stable-DINO achieves **64.8 AP** on COCO test-dev *without* any test time augmentation! Check our [Technical Report](https://arxiv.org/abs/2304.13027) for more details!
 * [02/13/2023] FocalNet has been integrated to [Keras](https://github.com/keras-team/keras-io), check out the [tutorial](https://keras.io/examples/vision/focal_modulation_network/)!
 * [01/18/2023] Checkout a curated paper list which introduce [networks beyond attention](https://github.com/FocalNet/Networks-Beyond-Attention) based on modern convolution and modulation!
 * [01/01/2023] Researchers showed that Focal-UNet beats Swin-UNet on several medical image segmentation benchmarks. Check out their [code](https://github.com/givkashi/Focal-Unet) and [paper](https://arxiv.org/abs/2212.09263), and happy new year!
