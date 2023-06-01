@@ -66,12 +66,12 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 
 | Model | Depth | Dim | Kernels | #Params. (M) | FLOPs (G) | Throughput (imgs/s) | Top-1 | Download
 | :----: | :---: | :---: | :---: | :---: | :--: | :---: | :---: |:---: | 
-| FocalNet-T | [2,2,6,2] |96 | [3,5] | 28.4 | 4.4 | 743 | 82.1 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_tiny_srf.pth)/[config](configs/focalnet_tiny_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_tiny_srf.txt)
-| FocalNet-T | [2,2,6,2] | 96 | [3,5,7] | 28.6 | 4.5 | 696 | 82.3 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_tiny_lrf.pth)/[config](configs/focalnet_tiny_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_tiny_lrf.txt)
-| FocalNet-S | [2,2,18,2] | 96 | [3,5] | 49.9 | 8.6 | 434 | 83.4 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_small_srf.pth)/[config](configs/focalnet_small_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_small_srf.txt)
-| FocalNet-S | [2,2,18,2] | 96 | [3,5,7] | 50.3 | 8.7 | 406 | 83.5 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_small_lrf.pth)/[config](configs/focalnet_small_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_small_lrf.txt)
-| FocalNet-B | [2,2,18,2] | 128 | [3,5] | 88.1 | 15.3 | 280 | 83.7 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_srf.pth)/[config](configs/focalnet_base_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_srf.txt)
-| FocalNet-B | [2,2,18,2] | 128 | [3,5,7] | 88.7 | 15.4 | 269 | 83.9 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_base_lrf.pth)/[config](configs/focalnet_base_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_lrf.txt)
+| FocalNet-T | [2,2,6,2] |96 | [3,5] | 28.4 | 4.4 | 743 | 82.1 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_tiny_srf.pth)/[config](configs/focalnet_tiny_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_tiny_srf.txt)
+| FocalNet-T | [2,2,6,2] | 96 | [3,5,7] | 28.6 | 4.5 | 696 | 82.3 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_tiny_lrf.pth)/[config](configs/focalnet_tiny_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_tiny_lrf.txt)
+| FocalNet-S | [2,2,18,2] | 96 | [3,5] | 49.9 | 8.6 | 434 | 83.4 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_small_srf.pth)/[config](configs/focalnet_small_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_small_srf.txt)
+| FocalNet-S | [2,2,18,2] | 96 | [3,5,7] | 50.3 | 8.7 | 406 | 83.5 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_small_lrf.pth)/[config](configs/focalnet_small_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_small_lrf.txt)
+| FocalNet-B | [2,2,18,2] | 128 | [3,5] | 88.1 | 15.3 | 280 | 83.7 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_base_srf.pth)/[config](configs/focalnet_base_srf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_srf.txt)
+| FocalNet-B | [2,2,18,2] | 128 | [3,5,7] | 88.7 | 15.4 | 269 | 83.9 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_base_lrf.pth)/[config](configs/focalnet_base_lrf.yaml)/[log](https://projects4jw.blob.core.windows.net/focalnet/release/classification/log_focalnet_base_lrf.txt)
 
 * Strict comparison with isotropic ViT models:
 
@@ -86,10 +86,10 @@ Finally, FocalNets are built with convolutional and linear layers, but goes beyo
 
 | Model | Depth | Dim | Kernels | #Params. (M) | Download
 | :----: | :---: | :---: | :---: | :---: | :--: | 
-| FocalNet-L | [2,2,18,2] | 192 | [5,7,9] | 207 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384.pth)/[config](configs/focalnet_large_fl3.yaml)
-| FocalNet-L | [2,2,18,2] | 192 | [3,5,7,9] | 207 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_large_lrf_384_fl4.pth)/[config](configs/focalnet_large_fl4.yaml)
-| FocalNet-XL | [2,2,18,2] | 256 | [5,7,9] | 366 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384.pth)/[config](configs/focalnet_xlarge_fl3.yaml)
-| FocalNet-XL | [2,2,18,2] | 256 | [3,5,7,9] | 366 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_xlarge_lrf_384_fl4.pth)/[config](configs/focalnet_xlarge_fl4.yaml)
+| FocalNet-L | [2,2,18,2] | 192 | [5,7,9] | 207 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_large_lrf_384.pth)/[config](configs/focalnet_large_fl3.yaml)
+| FocalNet-L | [2,2,18,2] | 192 | [3,5,7,9] | 207 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_large_lrf_384_fl4.pth)/[config](configs/focalnet_large_fl4.yaml)
+| FocalNet-XL | [2,2,18,2] | 256 | [5,7,9] | 366 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_xlarge_lrf_384.pth)/[config](configs/focalnet_xlarge_fl3.yaml)
+| FocalNet-XL | [2,2,18,2] | 256 | [3,5,7,9] | 366 | [ckpt](https://github.com/microsoft/FocalNet/releases/download/v1.0.0/focalnet_xlarge_lrf_384_fl4.pth)/[config](configs/focalnet_xlarge_fl4.yaml)
 | FocalNet-H | [2,2,18,2] | 352 | [3,5,7] | 687 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224.pth)/[config](configs/focalnet_huge_fl3.yaml)
 | FocalNet-H | [2,2,18,2] | 352 | [3,5,7,9] | 689 | [ckpt](https://projects4jw.blob.core.windows.net/focalnet/release/classification/focalnet_huge_lrf_224_fl4.pth)/[config](configs/focalnet_huge_fl4.yaml)
 
