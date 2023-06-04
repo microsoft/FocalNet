@@ -15,7 +15,6 @@ from timm.models.registry import register_model
 from torchvision import transforms
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
-from timm.data.transforms import _pil_interp
 
 class Mlp(nn.Module):
     def __init__(self, in_features, hidden_features=None, out_features=None, act_layer=nn.GELU, drop=0.):
@@ -489,6 +488,15 @@ class FocalNet(nn.Module):
     def no_weight_decay_keywords(self):
         return {''}
 
+    def forward_featuremaps(self, x):
+        x, H, W = self.patch_embed(x)
+        x = self.pos_drop(x)
+
+        for layer in self.layers:
+            x, H, W = layer(x, H, W)
+        x = self.norm(x)  # B L C
+        return x
+    
     def forward_features(self, x):
         x, H, W = self.patch_embed(x)
         x = self.pos_drop(x)
@@ -519,14 +527,14 @@ def build_transforms(img_size, center_crop=False):
     if center_crop:
         size = int((256 / 224) * img_size)
         t.append(
-            transforms.Resize(size, interpolation=_pil_interp('bicubic'))
+            transforms.Resize(size, interpolation='bicubic')
         )
         t.append(
             transforms.CenterCrop(img_size)    
         )
     else:
         t.append(
-            transforms.Resize(img_size, interpolation=_pil_interp('bicubic'))
+            transforms.Resize(img_size, interpolation='bicubic')
         )        
     t.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
@@ -537,14 +545,14 @@ def build_transforms4display(img_size, center_crop=False):
     if center_crop:
         size = int((256 / 224) * img_size)
         t.append(
-            transforms.Resize(size, interpolation=_pil_interp('bicubic'))
+            transforms.Resize(size, interpolation='bicubic')
         )
         t.append(
             transforms.CenterCrop(img_size)    
         )
     else:
         t.append(
-            transforms.Resize(img_size, interpolation=_pil_interp('bicubic'))
+            transforms.Resize(img_size, interpolation='bicubic')
         )  
     t.append(transforms.ToTensor())
     return transforms.Compose(t)

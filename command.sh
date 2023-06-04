@@ -1,0 +1,1 @@
+python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345 main_llm.py --eval --cfg configs/focalnet_tiny_srf_llm.yaml --resume focalnet_tiny_srf.pth --data-path ~/azure/vlpdatasets/imagenet --local_rank 0

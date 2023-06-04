@@ -25,17 +25,10 @@ def load_checkpoint(config, model, optimizer, lr_scheduler, logger):
             config.MODEL.RESUME, map_location='cpu', check_hash=True)
     else:
         checkpoint = torch.load(config.MODEL.RESUME, map_location='cpu')
-    if "focal" in config.MODEL.RESUME and 'model' not in checkpoint:
+
+    if not any([key.startswith('vision.') for key in checkpoint['model'].keys()]):
+        checkpoint = {'vision.' + key:val for key, val in checkpoint['model'].items()}
         checkpoint = {'model': checkpoint}
-    if 'head.weight' in checkpoint['model']:
-        if model.state_dict()['head.weight'].shape != checkpoint['model']['head.weight'].shape:
-            # TODO: select the corresponding weights for 1K
-            # checkpoint['model']['head.weight'] = checkpoint['model']['head.weight'].new(model.state_dict()['head.weight'].shape)
-            # trunc_normal_(checkpoint['model']['head.weight'], std=.02)
-            # checkpoint['model']['head.bias'] = checkpoint['model']['head.bias'].new(model.state_dict()['head.bias'].shape)
-            # trunc_normal_(checkpoint['model']['head.bias'], std=.02)        
-            checkpoint['model']['head.weight'] = model.state_dict()['head.weight'][:1000]
-            checkpoint['model']['head.bias'] = model.state_dict()['head.bias'][:1000]
 
     msg = model.load_state_dict(checkpoint['model'], strict=False)
     logger.info(msg)
@@ -57,8 +50,12 @@ def load_checkpoint(config, model, optimizer, lr_scheduler, logger):
     return max_accuracy
 
 
+def filter_llm(state_dict):
+    state_dict_new = {key:val for key, val in state_dict.items() if not key.startswith('llama')}
+    return state_dict_new
+    
 def save_checkpoint(config, epoch, model, max_accuracy, optimizer, lr_scheduler, logger):
-    save_state = {'model': model.state_dict(),
+    save_state = {'model': filter_llm(model.state_dict()),
                   'optimizer': optimizer.state_dict(),
                   'lr_scheduler': lr_scheduler.state_dict(),
                   'max_accuracy': max_accuracy,

@@ -1,0 +1,9 @@
+cython
+submitit
+scipy
+termcolor
+addict
+yapf
+timm==0.4.12
+albumentations
+tokenizers==0.13.3

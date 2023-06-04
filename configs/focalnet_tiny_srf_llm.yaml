@@ -1,0 +1,10 @@
+MODEL:
+  TYPE: focalnet_tiny_srf_llm
+  NAME: focalnet_tiny_srf_llm
+  DROP_PATH_RATE: 0.0
+  PRETRAINED: True
+  FOCAL:
+    EMBED_DIM: 96
+    DEPTHS: [2, 2, 6, 2]
+    FOCAL_LEVELS: [2, 2, 2, 2]
+    FOCAL_WINDOWS: [3, 3, 3, 3]
