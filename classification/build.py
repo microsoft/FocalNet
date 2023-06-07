@@ -1,5 +1,5 @@
 from timm.models import create_model
-from . import focalnet, focalnet_llm
+from . import focalnet
 
 def build_model(config):
     model_type = config.MODEL.TYPE
